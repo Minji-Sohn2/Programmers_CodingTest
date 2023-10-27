@@ -13,7 +13,7 @@ class Solution {
         answer = answer.replaceAll("^[.]|[.]$","");
         
         // 5단계 
-        if(answer.equals("")) {
+        if(answer.isEmpty()) {
             answer += "a";
         } 
         
