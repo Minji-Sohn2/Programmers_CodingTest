@@ -2,24 +2,28 @@ import java.util.*;
 
 class Solution {
     public int solution(int[][] dots) {
-        double slope1 = (double)(dots[0][1]-dots[1][1])/(dots[0][0]-dots[1][0]);
-        double slope2 = (double)(dots[2][1]-dots[3][1])/(dots[2][0]-dots[3][0]);
+        double slope1 = getSlope(dots[0], dots[1]);
+        double slope2 = getSlope(dots[2], dots[3]);
         if(slope1==slope2) {
             return 1;
         }
         
-        slope1 = (double)(dots[0][1]-dots[2][1])/(dots[0][0]-dots[2][0]);
-        slope2 = (double)(dots[1][1]-dots[3][1])/(dots[1][0]-dots[3][0]);
+        slope1 = getSlope(dots[0], dots[2]);
+        slope2 = getSlope(dots[1], dots[3]);
         if(slope1==slope2) {
             return 1;
         }
         
-        slope1 = (double)(dots[0][1]-dots[3][1])/(dots[0][0]-dots[3][0]);
-        slope2 = (double)(dots[1][1]-dots[2][1])/(dots[1][0]-dots[2][0]);
+        slope1 = getSlope(dots[0], dots[3]);
+        slope2 = getSlope(dots[1], dots[2]);
         if(slope1==slope2) {
             return 1;
         }
         
         return 0;
+    }
+    
+    public double getSlope(int[] dot1, int[] dot2) {
+        return (double)(dot1[1]-dot2[1])/(dot1[0]-dot2[0]);
     }
 }
