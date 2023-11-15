@@ -4,11 +4,20 @@ class Solution {
     
     public boolean solution(String[] phone_book) {
         
-        Arrays.sort(phone_book);
+        Map<String, Integer> map = new HashMap<>();
         
-        for(int i=0; i<phone_book.length-1; i++) {
-            if(phone_book[i+1].startsWith(phone_book[i])) {
-                return false;
+        for(int i=0; i<phone_book.length; i++) {
+            map.put(phone_book[i], i);
+        }
+        
+        for (String key : map.keySet()) {
+            String arr = "";
+            for (char num : key.toCharArray()) {
+                arr += num;
+
+                if (map.containsKey(arr) && !arr.equals(key)) {
+                    return false;
+                }
             }
         }
         
