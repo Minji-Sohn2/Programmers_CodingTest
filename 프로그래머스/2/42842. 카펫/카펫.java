@@ -13,6 +13,7 @@ class Solution {
                 if(bNum == brown) {
                     answer[0] = col;
                     answer[1] = row;
+                    break;
                 }
             }
         }
