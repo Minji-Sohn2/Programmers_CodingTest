@@ -39,8 +39,9 @@ class Solution {
     }
 
     private void dfs(int depth) {
+        
         if (depth == 3) {
-            max = Math.max(Math.abs(calcExpression()), max);
+            max = Math.max(Math.abs(calculateOp()), max);
             return;
         }
 
@@ -56,24 +57,26 @@ class Solution {
         }
     }
 
-    private long calcExpression() {
-        List<Long> tmpExpressionNums = new ArrayList<>(numList);
-        List<Character> tmpExpressionOps = new ArrayList<>(opList);
-        while (tmpExpressionOps.size() > 0) {
+    private long calculateOp() {
+        List<Long> copyNumList = new ArrayList<>(numList);
+        List<Character> copyOpList = new ArrayList<>(opList);
+        while (copyOpList.size() > 0) {
             int maxPriority = 0;
-            for (int i = 0; i < tmpExpressionOps.size(); i++) {
-                maxPriority = Math.max(getPriority(tmpExpressionOps.get(i)), maxPriority);
+            // 연산자 개수 확인 -> 우선순위 최대 구하기
+            for (int i = 0; i < copyOpList.size(); i++) {
+                maxPriority = Math.max(getPriority(copyOpList.get(i)), maxPriority);
             }
-            for (int i = 0; i < tmpExpressionOps.size(); i++) {
-                if (getPriority(tmpExpressionOps.get(i)) == maxPriority) {
-                    tmpExpressionNums.add(i,
-                        calculate(tmpExpressionNums.remove(i), tmpExpressionNums.remove(i),
-                            tmpExpressionOps.remove(i)));
+            for (int i = 0; i < copyOpList.size(); i++) {
+                if (getPriority(copyOpList.get(i)) == maxPriority) {
+                    copyNumList.add(i,
+                        calculate(copyNumList.remove(i), copyNumList.remove(i),
+                            copyOpList.remove(i)));
                     break;
                 }
             }
         }
-        return tmpExpressionNums.get(0);
+        
+        return copyNumList.get(0);
     }
 
     // 연산
