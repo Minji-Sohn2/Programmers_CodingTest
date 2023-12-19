@@ -72,7 +72,7 @@ class Solution {
         long x = (b*f - d*e) / denominator;
         long y = (c*e - a*f) / denominator;
 
-        // x, y가 둘 중 하나라도 정수가 아니라면
+        // x, y 모두 정수라면
         if((b*f - d*e)%denominator==0 && (c*e - a*f)%denominator==0) {
             list.add(new int[] {(int)x,(int)y});
 
