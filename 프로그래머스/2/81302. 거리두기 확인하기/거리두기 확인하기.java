@@ -1,6 +1,6 @@
 class Solution {
-    private final int[] dx = {-1, 1, 0, 0};  // 왼,오,아래,위
-    private final int[] dy = {0, 0, -1, 1};  // 왼,오,아래,위
+    private final int[] dx = {-1, 1, 0};  // 왼,오,아래,위
+    private final int[] dy = {0, 0, 1};  // 왼,오,아래,위
     private char[][] matrix;         // 대기실
     private boolean[][] visited;     // 탐색했던 자리인지 확인
     private boolean isAvailable;     // 거리두기를 지켰는지 확인
@@ -42,7 +42,7 @@ class Solution {
         visited[r][c] = true;
 
         // 앞, 뒤, 양 옆 확인
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             int nr = r + dx[i];
             int nc = c + dy[i];
 
