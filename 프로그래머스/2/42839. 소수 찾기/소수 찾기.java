@@ -21,9 +21,9 @@ class Solution {
             numbersSet.add(Integer.valueOf(str));
 
         // 2. 남은 숫자 중 한 개를 더해 새로운 조합을 만든다.
-        for (int i = 0; i < others.length(); i++)
+        for (int i = 0; i < others.length(); i++){
             recursive(str + others.charAt(i), others.substring(0, i) + others.substring(i + 1));
-
+        }
     }
     
     public boolean isPrime(int num) {
