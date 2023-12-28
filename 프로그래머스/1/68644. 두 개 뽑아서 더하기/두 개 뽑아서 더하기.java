@@ -5,7 +5,7 @@ class Solution {
     private Set<Integer> set;
     
     public int[] solution(int[] numbers) {
-        set = new HashSet<>();
+        set = new TreeSet<>();
         calculate(numbers);
         return setToArr(set);
     }
@@ -20,7 +20,7 @@ class Solution {
     
     private int[] setToArr(Set<Integer> set) {
         return set.stream()
-            .sorted()
+            //.sorted()
             .mapToInt(Integer::intValue)
             .toArray();
     }
