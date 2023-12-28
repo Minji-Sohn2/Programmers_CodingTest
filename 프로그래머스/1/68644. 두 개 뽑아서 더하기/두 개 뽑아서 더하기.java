@@ -1,27 +1,22 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 class Solution {
-    
-    private Set<Integer> set;
-    
+
     public int[] solution(int[] numbers) {
-        set = new TreeSet<>();
-        calculate(numbers);
-        return setToArr(set);
-    }
-    
-    private void calculate(int[] numbers) {
-        for(int i=0; i<numbers.length; i++) {
-            for(int j=i+1; j<numbers.length; j++) {
-                set.add(numbers[i] + numbers[j]);
+        List<Integer> sumList = new ArrayList<>();
+
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                if(!sumList.contains(numbers[i] + numbers[j])) {
+                    sumList.add(numbers[i] + numbers[j]);
+                }
             }
         }
-    }
-    
-    private int[] setToArr(Set<Integer> set) {
-        return set.stream()
-            //.sorted()
-            .mapToInt(Integer::intValue)
-            .toArray();
+
+        int[] sumArray = sumList.stream().mapToInt(Integer::intValue).toArray();
+        Arrays.sort(sumArray);
+        return sumArray;
     }
 }
