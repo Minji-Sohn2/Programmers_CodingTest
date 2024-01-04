@@ -24,6 +24,8 @@ class Solution {
         for (int i = 0; i < query.length; i++) {
             // 쿼리에서 and 제거
             query[i] = query[i].replaceAll(" and ", "");
+            // 쿼리 정보 배열로 변환
+            //[0] : 조건 이어붙인 string, [1] : 점수
             String[] queryInfo = query[i].split(" ");
             answer[i] = map.containsKey(queryInfo[0]) ? binarySearch(queryInfo[0], Integer.parseInt(queryInfo[1])) : 0;
         }
@@ -51,8 +53,9 @@ class Solution {
 
     // info -> 가능한 모든 조합 생성
     private static void generateCombinations(String[] personInfo, String str, int count) {
+        // 언어, 직군, 경력, 소울푸드를 모두 선택했을 때
         if (count == 4) {
-            // 맵에 특정 key가 존재하지 않을 때
+            // 맵에 해당 key가 존재하지 않을 때
             // <지원자 정보 조합(str) - new ArrayList<>()> 생성 후 점수 add
             map.computeIfAbsent(str, k -> new ArrayList<>()).add(Integer.parseInt(personInfo[4]));
             return;
