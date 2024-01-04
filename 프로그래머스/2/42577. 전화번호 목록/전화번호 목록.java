@@ -11,11 +11,11 @@ class Solution {
         }
         
         for (String key : map.keySet()) {
-            String arr = "";
+            String prefix = "";
             for (char num : key.toCharArray()) {
-                arr += num;
+                prefix += num;
 
-                if (map.containsKey(arr) && !arr.equals(key)) {
+                if (map.containsKey(prefix) && !prefix.equals(key)) {
                     return false;
                 }
             }
