@@ -41,43 +41,45 @@ class Solution {
         
         // 장르별 2곡씩 선정
         List<Music> bestAlbum = new ArrayList<>();
+       
+        //----------------------------------------------------
+        for(String genre : ordered_genre) {
+            // 2곡씩 담을 list
+            List<Music> list = new ArrayList<>();
+            // for(int i=0; i<genres.length; i++) {
+            for(int i=0; i<musicList.size(); i++) {
+                if(genre.equals(musicList.get(i).genre) && list.size()<2) {
+                    list.add(musicList.get(i));
+                }
+            }
+            
+            // list 속 Music(2개) 고유번호 기준 정렬
+            Collections.sort(list,(o1, o2) -> o2.play - o1.play);
+            for(int i=0; i<list.size(); i++) {
+                bestAlbum.add(list.get(i));
+            }
+            // bestAlbum.addAll(list);
+        }
+        //----------------------------------------------------
         
-//         for(String genre : ordered_genre) {
+//         for (String genre : ordered_genre) {
 //             // 2곡씩 담을 list
 //             List<Music> list = new ArrayList<>();
-//             // for(int i=0; i<genres.length; i++) {
-//             for(int i=0; i<musicList.size(); i++) {
-//                 if(genre.equals(musicList.get(i).genre) && list.size()<2) {
+//             for (int i = 0; i < musicList.size(); i++) {
+//                 if (genre.equals(musicList.get(i).genre)) {
 //                     list.add(musicList.get(i));
 //                 }
 //             }
-            
-//             // list 속 Music(2개) 고유번호 기준 정렬
-//             Collections.sort(list,(o1, o2) -> o2.index - o1.index);
-//             for(int i=0; i<list.size(); i++) {
-//                 bestAlbum.add(list.get(i));
-//             }
-//             // bestAlbum.addAll(list);
-//         }
-        
-        for (String genre : ordered_genre) {
-    // 2곡씩 담을 list
-    List<Music> list = new ArrayList<>();
-    for (int i = 0; i < musicList.size(); i++) {
-        if (genre.equals(musicList.get(i).genre)) {
-            list.add(musicList.get(i));
-        }
-    }
-
-    // list 속 Music(2개) 고유번호 기준 정렬
-    Collections.sort(list, (o1, o2) -> o2.play - o1.play);
     
-    // Add the top two songs for each genre to the bestAlbum
-    bestAlbum.add(list.get(0));
-    if (list.size() > 1) {
-        bestAlbum.add(list.get(1));
-    }
-}
+//             // list 속 Music(2개) 고유번호 기준 정렬
+//              Collections.sort(list, (o1, o2) -> o2.play - o1.play);
+    
+//             bestAlbum.add(list.get(0));
+//             if (list.size() > 1) {
+//               bestAlbum.add(list.get(1));
+//             }
+//          }
+        //----------------------------------------------------
         
         // 고유번호(index)만 추출
         int[] answer = bestAlbum.stream()
