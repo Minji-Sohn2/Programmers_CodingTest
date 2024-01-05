@@ -19,12 +19,12 @@ class Solution {
                     continue;
                 }
 
-                if (i!=1) {
+                //if (i!=1) {
                     map[i][j] += map[i-1][j]%div;
-                }
-                if (j!=1) {
+                //}
+                //if (j!=1) {
                     map[i][j] += map[i][j-1]%div;
-                }
+                //}
             }
         }
 
