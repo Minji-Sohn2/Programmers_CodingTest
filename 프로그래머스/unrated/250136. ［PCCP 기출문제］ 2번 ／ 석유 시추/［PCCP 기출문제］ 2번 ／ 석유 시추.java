@@ -9,12 +9,12 @@ class Solution {
     
     // 석유 덩어리 그룹 클래스 정의
     public class Group {
-        int count;
+        int size;
         Set<Integer> possibleY;
 
-        public Group(Set<Integer> possibleY, int count) {
+        public Group(Set<Integer> possibleY, int size) {
             this.possibleY = possibleY;
-            this.count = count;
+            this.size = size;
         }
     }
 
@@ -26,9 +26,10 @@ class Solution {
     }
 
     private void initGroups(int[][] land) {
-        visited = new boolean[land.length][land[0].length];
         height = land.length;
         width = land[0].length;
+        visited = new boolean[height][width];
+        
 
         for (int i = 0; i < land.length; i++) {
             for (int j = 0; j < land[0].length; j++) {
@@ -47,7 +48,7 @@ class Solution {
 
         for (Group group : oilGroups) {
             for (Integer offset : group.possibleY) {
-                answer[offset] += group.count;
+                answer[offset] += group.size;
                 maxNum = Math.max(maxNum, answer[offset]);
             }
         }
