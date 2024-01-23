@@ -8,7 +8,7 @@ class Solution {
             // 목표 알파벳까지 위로/ 아래로 움직여야 하는 횟수 최솟값
             answer += Math.min(name.charAt(i)-'A', 26-(name.charAt(i)-'A'));
             
-            // 오른쪽으로 이동하면서 'A'가 끝난 위치 찾기
+            // 오른쪽으로 이동하면서 다음 'A'가 아닌 위치 찾기
             index = i+1;
             while(index<name.length() && name.charAt(index)=='A') {
                 index++;
