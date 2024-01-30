@@ -10,10 +10,8 @@ class Solution {
         int[] answer = new int[size];
         int idx = 0;
         for(int n : arr) {
-            for(int i=0; i<n; i++) {
-                answer[idx] = n;
-                idx++;
-            }
+            Arrays.fill(answer, idx, idx + n, n);
+            idx += n;
         }
         
         return answer;
