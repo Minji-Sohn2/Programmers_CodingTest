@@ -2,14 +2,20 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr) {
-        List<Integer> answer = new ArrayList<>();
-        
-        for(int num : arr) {
-            answer.addAll(Collections.nCopies(num, num));
+        int size = 0;
+        for(int n : arr) {
+            size += n;
         }
         
-        return answer.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
+        int[] answer = new int[size];
+        int idx = 0;
+        for(int n : arr) {
+            for(int i=0; i<n; i++) {
+                answer[idx] = n;
+                idx++;
+            }
+        }
+        
+        return answer;
     }
 }
