@@ -3,7 +3,7 @@ class Solution {
         int answer = 0;
   
         for(int i=0; i<A.length(); i++) {            
-            String newA = A.substring(A.length()-i) + A.substring(0, A.length()-i);
+            String newA = rotateString(A, i);
             if(newA.equals(B)) {
                 return answer;
             }
@@ -11,5 +11,9 @@ class Solution {
         }
         
         return -1;
+    }
+    
+    private String rotateString(String str, int count) {
+        return str.substring(str.length()-count) + str.substring(0, str.length()-count);
     }
 }
