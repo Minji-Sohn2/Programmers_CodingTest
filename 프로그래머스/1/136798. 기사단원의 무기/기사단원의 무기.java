@@ -1,19 +1,17 @@
 class Solution {
     public int solution(int number, int limit, int power) {
         int[] divArr = new int[number];
+        int answer = 0;
         
         for(int i=1; i<=number; i++) {
-            divArr[i-1] = countDivisors(i);
-        }
-        
-        int answer = 0;
-        for(int i=0; i<divArr.length; i++) {
-            if(divArr[i]>limit) {
-                divArr[i] = power;
+            int attackP = countDivisors(i);
+            if(attackP > limit) {
+                attackP = power;
             }
-            answer += divArr[i];
+            
+            answer += attackP;
         }
-        
+
         return answer;
     }
     
