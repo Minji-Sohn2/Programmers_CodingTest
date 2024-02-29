@@ -4,6 +4,7 @@ class Solution {
         for(int i=0; i<seoul.length; i++) {
             if(seoul[i].equals("Kim")) {
                 index = i;
+                break;
             }
         }
         
